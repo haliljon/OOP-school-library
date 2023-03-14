@@ -64,6 +64,8 @@
 
 ### Key Features <a name="key-features"></a>
 
+- Has different classes that inherit from `Person` class
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
@@ -103,7 +105,7 @@ FUTURE FEATURES
 
 >
 
-- [ ] **[I would like to add more data in the future]**
+- I would like to add more data in the future
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
