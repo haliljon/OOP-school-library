@@ -14,13 +14,11 @@ class App
     @classroom = ['Web Development']
   end
 
-  # def list_all_books(@books)
-  #   @books.each do |book|
-  #     puts "Title: #{book.title}, Author: #{book.author}"
-  #   end
-  # end
-  list_books=ListBooks.new
-  list_books.list_all_books(@books)
+  def list_all_books
+    @books.each do |book|
+      puts "Title: #{book.title}, Author: #{book.author}"
+    end
+  end
 
   def list_all_people
     @people.each do |person|
