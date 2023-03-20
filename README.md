@@ -97,11 +97,13 @@ Clone this repository to your desired folder:
 - Twitter: [@twitterhaliljon1](https://twitter.com/haliljon1)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/juraboev-haliljon)
 
+
 👤 **Thomas Obuya**
 
 - GitHub: [@githubhandle](https://github.com/tobuya)
 - Twitter: [@twitterhandle](https://twitter.com/MullerTheGreat1)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/tobuya)
+
 
 👤 **Saba Ahmad**
 
