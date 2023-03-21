@@ -35,7 +35,7 @@
     <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
   </ul>
  </details>
- 
+
 <details>
   <summary>Technologies</summary>
   <ul>
@@ -96,6 +96,14 @@ Clone this repository to your desired folder:
 - GitHub: [@githubhaliljon](https://github.com/haliljon)
 - Twitter: [@twitterhaliljon1](https://twitter.com/haliljon1)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/juraboev-haliljon)
+
+
+👤 **Thomas Obuya**
+
+- GitHub: [@githubhandle](https://github.com/tobuya)
+- Twitter: [@twitterhandle](https://twitter.com/MullerTheGreat1)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/tobuya)
+
 
 👤 **Saba Ahmad**
 
