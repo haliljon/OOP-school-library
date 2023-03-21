@@ -15,12 +15,14 @@ class App
   end
 
   def list_all_books
+    puts 'Please add a book to the library' if @books.empty?
     @books.each do |book|
       puts "Title: #{book.title}, Author: #{book.author}"
     end
   end
 
   def list_all_people
+    puts 'Please add a person to the library' if @people.empty?
     @people.each do |person|
       puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
