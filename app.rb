@@ -29,8 +29,7 @@ class App
   end
 
   def create_person
-    puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]:'
-    input = gets.chomp.to_i
+    input = get_user_input_int('Do you want to create a student (1) or a teacher (2)? [Input the number]:')
 
     case input
     when 1
@@ -44,12 +43,9 @@ class App
   end
 
   def create_student
-    puts 'Age:'
-    age = gets.chomp.to_i
-    puts 'Name:'
-    name = gets.chomp.to_s
-    puts 'Has parent permission? [Y/N]:'
-    has_permission = gets.chomp.to_s.upcase
+    age = get_user_input_int('Age:')
+    name = get_user_input_string('Name:')
+    has_permission = get_user_input_string('Has parent permission? [Y/N]:').upcase
     case has_permission
     when 'Y'
       permission = true
@@ -65,14 +61,11 @@ class App
   end
 
   def create_teacher
-    puts 'Age:'
-    age = gets.chomp.to_i
-    puts 'Name:'
-    name = gets.chomp.to_s
-    puts 'Specialization:'
-    specialization = gets.chomp.to_s
+    age = get_user_input_int('Age:')
+    name = get_user_input_string('Name:')
+    specialization = get_user_input_string('Specialization:')
 
-    @people << Teacher.new(specialization, name, age)
+    @people << Teacher.new(specialization, age, name)
     puts 'Person created successfully'
   end
 
