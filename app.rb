@@ -14,6 +14,16 @@ class App
     @classroom = ['Web Development']
   end
 
+  def get_user_input_int(message)
+    puts message
+    gets.chomp.to_i
+  end
+
+  def get_user_input_string(message)
+    puts message
+    gets.chomp.to_s
+  end
+
   def list_all_books
     puts 'Please add a book to the library' if @books.empty?
     @books.each do |book|
@@ -70,10 +80,8 @@ class App
   end
 
   def create_book
-    puts 'Title:'
-    title = gets.chomp.to_s
-    puts 'Author:'
-    author = gets.chomp.to_s
+    title = get_user_input_string('Title:')
+    author = get_user_input_string('Author:')
     books << Book.new(title, author)
     puts 'Book created successfully'
   end
@@ -89,21 +97,19 @@ class App
       puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_index = gets.chomp.to_i
-    puts 'Date:'
-    date = gets.chomp.to_s
+    date = get_user_input_string('Date:')
     rentals << Rental.new(date, people[person_index], books[book_index])
     puts 'Rental created successfully'
   end
 
   def list_all_rentals_for_person_id
-    puts 'ID of person:'
-    id = gets.chomp.to_i
+    id = get_user_input_int('ID of person:')
     puts 'Rentals:'
     rentals.each do |rental|
       if rental.person.id == id
         puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
       else
-        puts 'No rentals found for that ID'
+        puts 'There are no rentals for that ID'
       end
     end
   end
