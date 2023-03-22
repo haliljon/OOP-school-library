@@ -1,5 +1,5 @@
 require_relative '../book'
-require_relative './data'
+require_relative '../data'
 
 class ListBooks
   attr_accessor :books
