@@ -1,12 +1,13 @@
 require_relative '../student'
 require_relative '../teacher'
+require_relative '../data'
 
 class ListPeople
-  attr_accessor :people, :classroom
+  attr_accessor :people
 
   def initialize
-    @classroom = ['Web Development']
-    @people = []
+    @data = Data.new
+    @people = @data.load_people
   end
 
   def list_all_people
@@ -47,7 +48,9 @@ class ListPeople
       create_student
     end
 
-    @people << Student.new(classroom, age, name, parent_permission: permission)
+    person =  Student.new(nil, age, name, parent_permission: permission)
+    @people << person
+    @data.create_person(person)
     puts 'Person created successfully'
   end
 
@@ -59,7 +62,9 @@ class ListPeople
     puts 'Specialization:'
     specialization = gets.chomp.to_s
 
-    @people << Teacher.new(specialization, name, age)
+    person = Teacher.new(nil, age, name, specialization)
+    @people << person
+    @data.create_person(person)
     puts 'Person created successfully'
   end
 end
