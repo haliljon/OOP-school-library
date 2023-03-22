@@ -67,6 +67,7 @@ class Data
                   end
       File.write("#{PATH}person.json", JSON.pretty_generate([user_file]))
     end
+  end
 
     def load_rentals
       return [] unless File.size?("#{PATH}rental.json")
@@ -81,7 +82,6 @@ class Data
       end
       @rentals
     end
-  end
 
   def create_rental(rental)
     if File.size?("#{PATH}rental.json")
