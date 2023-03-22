@@ -48,7 +48,7 @@ class ListPeople
       create_student
     end
 
-    person =  Student.new(nil, age, name, parent_permission: permission)
+    person = Student.new(nil, age, name, parent_permission: permission)
     @people << person
     @data.create_person(person)
     puts 'Person created successfully'

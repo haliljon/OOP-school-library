@@ -69,19 +69,19 @@ class Data
     end
   end
 
-    def load_rentals
-      return [] unless File.size?("#{PATH}rental.json")
+  def load_rentals
+    return [] unless File.size?("#{PATH}rental.json")
 
-      stored_rentals = JSON.parse(File.read("#{PATH}rental.json"))
-      stored_rentals.map do |rental|
-        p rental['book']
-        p rental['person']
-        book = @books.find { |x| x.id == rental['book'] }
-        person = @person.find { |x| x.id == rental['person'] }
-        @rentals << Rental.new(rental['date'], book, person)
-      end
-      @rentals
+    stored_rentals = JSON.parse(File.read("#{PATH}rental.json"))
+    stored_rentals.map do |rental|
+      p rental['book']
+      p rental['person']
+      book = @books.find { |x| x.id == rental['book'] }
+      person = @person.find { |x| x.id == rental['person'] }
+      @rentals << Rental.new(rental['date'], book, person)
     end
+    @rentals
+  end
 
   def create_rental(rental)
     if File.size?("#{PATH}rental.json")
