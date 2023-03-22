@@ -1,10 +1,12 @@
 require_relative '../book'
+require_relative './data'
 
 class ListBooks
   attr_accessor :books
 
   def initialize
-    @books = []
+    @data = Data.new
+    @books = @data.load_books
   end
 
   def list_books
@@ -18,7 +20,9 @@ class ListBooks
     title = gets.chomp.to_s
     puts 'Author:'
     author = gets.chomp.to_s
-    @books << Book.new(title, author)
+    book = Book.new(nil, title, author)
+    @books << book
+    @data.create_book(book)
     puts 'Book created successfully'
   end
 end

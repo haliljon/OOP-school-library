@@ -3,6 +3,7 @@ require_relative '../book'
 require_relative '../person'
 require_relative '../rental'
 
+PATH = '/Users/haliljonjuraboev/Desktop/Microverse/Module-4/week-4/OOP-school-library/data/'.freeze
 class Data
   def initialize
     @books = []
@@ -11,29 +12,29 @@ class Data
   end
 
   def load_books
-    return [] unless File.size?('../data/book.json')
+    return [] unless File.size?("#{PATH}book.json")
 
-    stored_books = JSON.parse(File.read('../data/book.json'))
+    stored_books = JSON.parse(File.read("#{PATH}book.json"))
     stored_books.map do |book|
-      @books << Book.new(book.id, book.title, book.author)
+      @books << Book.new(book['id'], book['title'], book['author'])
     end
     @books
   end
 
   def create_book(book)
-    if File.size?('../data/book.json')
-      stored_books = JSON.parse(File.read('../data/book.json'))
-      stored_books << {id: book.id, title: book.title, author: book.author}
-      File.write('..data/book.json', JSON.pretty_generate(stored_books))
+    if File.size?("#{PATH}book.json")
+      stored_books = JSON.parse(File.read("#{PATH}book.json"))
+      stored_books << { id: book.id, title: book.title, author: book.author }
+      File.write("#{PATH}book.json", JSON.pretty_generate(stored_books))
     else
-      File.write('../data/book.json', JSON.pretty_generate([{ id: book.id, title: book.title, author: book.author }]))
+      File.write("#{PATH}book.json", JSON.pretty_generate([{ id: book.id, title: book.title, author: book.author }]))
     end
   end
 
   def load_people
-    return [] unless File.size?('../data/person.json')
+    return [] unless File.size?("#{PATH}person.json")
 
-    stored_people = JSON.parse(File.read('../data/person.json'))
+    stored_people = JSON.parse(File.read("#{PATH}person.json"))
     stored_people.map do |person|
       case person.type
       when 'student'
@@ -43,5 +44,52 @@ class Data
       end
     end
     @people
+  end
+
+  def create_person(person)
+    if File.size?("#{PATH}person.json")
+      stored_people = JSON.parse(File.read("#{PATH}person.json"))
+      stored_people << if person.instance_of? Student
+                         { id: person.id, name: person.name, age: person.age,
+                           parent_permission: person.parent_permission }
+                       else
+                         { id: person.id, name: person.name, age: person.age, specialization: person.specialization }
+                       end
+      File.write("#{PATH}person.json", JSON.pretty_generate(stored_people))
+    else
+      user_file = if person.instance_of? Student
+                    { id: person.id, name: person.name, age: person.age, parent_permission: person.parent_permission,
+                      type: 'student' }
+                  else
+                    { id: person.id, name: person.name, age: person.age, specialization: person.specialization,
+                      type: 'teacher' }
+                  end
+      File.write("#{PATH}person.json", JSON.pretty_generate([user_file]))
+    end
+
+    def load_rentals
+      return [] unless File.size?("#{PATH}rental.json")
+
+      stored_rentals = JSON.parse(File.read("#{PATH}rental.json"))
+      stored_rentals.map do |rental|
+        p rental['book']
+        p rental['person']
+        book = @books.find { |x| x.id == rental['book'] }
+        person = @person.find { |x| x.id == rental['person'] }
+        @rentals << Rental.new(rental['date'], book, person)
+      end
+      @rentals
+    end
+  end
+
+  def create_rental(rental)
+    if File.size?("#{PATH}rental.json")
+      stored_rentals = JSON.parse(File.read("#{PATH}rental.json"))
+      stored_rentals << { date: rental.date, book: rental.book.id, person: rental.person.id }
+      File.write("#{PATH}rental.json", JSON.pretty_generate(stored_rentals))
+    else
+      File.write("#{PATH}rental.json",
+                 JSON.pretty_generate([{ date: rental.date, book: rental.book.id, person: rental.person.id }]))
+    end
   end
 end
