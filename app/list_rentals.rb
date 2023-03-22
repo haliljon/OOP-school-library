@@ -1,10 +1,12 @@
 require_relative '../rental'
+require_relative '../data'
 
 class ListRentals
   attr_accessor :rentals
 
   def initialize
-    @rentals = []
+    @data = Data.new
+    @rentals = @data.load_rentals
   end
 
   def create_rental(books, people)
@@ -20,7 +22,9 @@ class ListRentals
     person_index = gets.chomp.to_i
     puts 'Date:'
     date = gets.chomp.to_s
-    rentals << Rental.new(date, people[person_index], books[book_index])
+    rental = Rental.new(date, people[person_index], books[book_index])
+    @rentals << rental
+    @data.create_rental(rental)
     puts 'Rental created successfully'
   end
 

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 681,
+    "age": 12,
+    "name": "Tom",
+    "parent_permission": true,
+    "type": "student"
+  },
+  {
+    "id": 273,
+    "age": 45,
+    "name": "Mr Cook",
+    "specialization": "Biology",
+    "type": "teacher"
+  }
+]

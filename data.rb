@@ -1,9 +1,9 @@
 require 'json'
-require_relative '../book'
-require_relative '../person'
-require_relative '../rental'
+require_relative 'book'
+require_relative 'person'
+require_relative 'rental'
 
-PATH = '/Users/haliljonjuraboev/Desktop/Microverse/Module-4/week-4/OOP-school-library/data/'.freeze
+PATH = './data/'.freeze
 class Data
   def initialize
     @books = []
@@ -36,11 +36,11 @@ class Data
 
     stored_people = JSON.parse(File.read("#{PATH}person.json"))
     stored_people.map do |person|
-      case person.type
+      case person['type']
       when 'student'
-        @people << Student.new(person.id, nil, person.age, person.parent_permission)
+        @people << Student.new(person['id'], nil, person['age'], person['parent_permission'])
       when 'teacher'
-        @people << Teacher.new(nil, person.specialization, person.age, person.name)
+        @people << Teacher.new(nil, person['specialization'], person['age'], person['name'])
       end
     end
     @people
@@ -50,18 +50,19 @@ class Data
     if File.size?("#{PATH}person.json")
       stored_people = JSON.parse(File.read("#{PATH}person.json"))
       stored_people << if person.instance_of? Student
-                         { id: person.id, name: person.name, age: person.age,
-                           parent_permission: person.parent_permission }
+                         { id: person.id, age: person.age, name: person.name,
+                           parent_permission: person.parent_permission, type: 'student' }
                        else
-                         { id: person.id, name: person.name, age: person.age, specialization: person.specialization }
+                         { id: person.id, age: person.age, name: person.name,
+                           specialization: person.specialization, type: 'teacher' }
                        end
       File.write("#{PATH}person.json", JSON.pretty_generate(stored_people))
     else
       user_file = if person.instance_of? Student
-                    { id: person.id, name: person.name, age: person.age, parent_permission: person.parent_permission,
+                    { id: person.id, age: person.age, name: person.name, parent_permission: person.parent_permission,
                       type: 'student' }
                   else
-                    { id: person.id, name: person.name, age: person.age, specialization: person.specialization,
+                    { id: person.id, age: person.age, name: person.name, specialization: person.specialization,
                       type: 'teacher' }
                   end
       File.write("#{PATH}person.json", JSON.pretty_generate([user_file]))
