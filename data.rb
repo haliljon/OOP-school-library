@@ -77,8 +77,8 @@ class Data
       p rental['book']
       p rental['person']
       book = @books.find { |x| x.id == rental['book'] }
-      person = @person.find { |x| x.id == rental['person'] }
-      @rentals << Rental.new(rental['date'], book, person)
+      person = @people.find { |x| x.id == rental['person'] }
+      @rentals << Rental.new(rental['date'], person, book)
     end
     @rentals
   end
