@@ -38,9 +38,9 @@ class Data
     stored_people.map do |person|
       case person['type']
       when 'student'
-        @people << Student.new(person['id'], nil, person['age'], person['parent_permission'])
+        @people << Student.new(person['id'], person['parent_permission'], person['age'], person['name'])
       when 'teacher'
-        @people << Teacher.new(nil, person['specialization'], person['age'], person['name'])
+        @people << Teacher.new(person['id'], person['age'], person['name'], person['specialization'])
       end
     end
     @people
