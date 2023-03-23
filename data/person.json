@@ -1,0 +1,37 @@
+[
+  {
+    "id": 681,
+    "age": 12,
+    "name": "Tom",
+    "parent_permission": true,
+    "type": "student"
+  },
+  {
+    "id": 273,
+    "age": 45,
+    "name": "Mr Cook",
+    "specialization": "Biology",
+    "type": "teacher"
+  },
+  {
+    "id": 74,
+    "age": 56,
+    "name": "Go",
+    "specialization": "It",
+    "type": "teacher"
+  },
+  {
+    "id": 278,
+    "age": 14,
+    "name": "Hos",
+    "parent_permission": true,
+    "type": "student"
+  },
+  {
+    "id": 740,
+    "age": 15,
+    "name": "Cat",
+    "parent_permission": false,
+    "type": "student"
+  }
+]
